@@ -1,0 +1,63 @@
+
+<br>
+<br>
+<div class="card border-primary mb-3">
+  <div class="card-header">Usuarios</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title" >Listado de Usuarios</h5>
+
+	<div class="my-2 text-left">                                            
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/form']"> Crear Usuario</button>
+   </div>
+      <!-- para mostrar mensaje si no hay datos -->
+      <div *ngIf="usuarios?.length == 0" class="alert alert-info">
+        No hay Usuarios en la base de datos
+      </div>
+    <table class="table table-border table-striped" *ngIf="usuarios?.length > 0">
+      <thead >
+        <tr >
+           <th>Id</th>
+           <th>Nombre</th>
+          <th>Apellido</th>
+           <th>Telefono</th>
+           <th>Usuario</th>
+           <th>correo</th>
+           <th>editar</th>
+           <th>eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+        
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nombres}}</td>
+          <td>{{usuario.apellidos}}</td>
+          <td>{{usuario.telefono}}</td>
+          <td>{{usuario.usuario}}</td>
+          <td>{{usuario.correo}}</td>
+          
+          <!-- editar -  redirige al form.component.html -->
+          <td>
+            <button name="editar" type="button" [routerLink]="['/usuarios/form', usuario.id]" class="btn btn-primary"> editar</button>
+          </td>
+          <td>
+            <button name="eliminar" type="button" (click)="eliminarUsuario(cliente)"  class="btn btn-danger"> eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+     <!-- PAGINADOR[4] -->
+    <!--se manda el "paginador" cargado de cliente.component.ts a paginator.component.ts-->
+    <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+      <!-- este selecto es el de paginator.component.ts -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

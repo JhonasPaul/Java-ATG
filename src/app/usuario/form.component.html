@@ -1,0 +1,95 @@
+
+  <div  class="card bg-light text-black" style="margin-top: 40px; margin-bottom: 80px">
+    <div class="card-header">Formulario</div>
+    <div class="card-body">
+  
+      <form  #usuarioForm="ngForm">
+        <div class="form-group row">
+            <label for="nombres" class="col-form-label col-sm-2" >Nombre: </label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" [(ngModel)]="usuario.nombres" name="nombres"> <!--required minlength="4" #nombre="ngModel"-->
+                    <!-- <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors.required">
+                  Nombre es requerido
+                </div>
+                <div *ngIf="nombre.errors.minlength">
+                  Nombre debe tener al menos 4 caracteres
+                </div>
+              </div> -->
+            </div>
+          </div>
+  
+        <div class="form-group row">
+          <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.apellidos" name="apellidos" #apellidos="ngModel" required required minlength="3"> 
+            <div class="alert alert-danger" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+              <div *ngIf="apellidos.errors.required">
+                apellidos es requerido
+              </div>
+              <div *ngIf="apellidos.errors.minlength">
+                apellidos debe tener al menos 2 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.telefono" name="telefono" #telefono="ngModel" required minlength="3"> <!-- required -->
+            <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+              <div *ngIf="telefono.errors.required">
+                telefono es requerido
+              </div>
+              <div *ngIf="telefono.errors.minlength">
+                telefono debe tener al menos 4 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="form-group row">
+          <label for="usuario" class="col-form-label col-sm-2">Usuario</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.usuario" name="usuario" #usuario="ngModel" required minlength="4"> <!-- required -->
+            <div class="alert alert-danger" *ngIf="usuario.invalid && (usuario.dirty || usuario.touched)">
+              <div *ngIf="usuario.errors.required">
+                usuario es requerido
+              </div>
+              <div *ngIf="usuario.errors.minlength">
+                usuario debe tener al menos 4 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="correo" class="col-form-label col-sm-2">Correo</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="usuario.correo" name="correo" #correo="ngModel" required minlength="4"> <!-- required -->
+            <div class="alert alert-danger" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+              <div *ngIf="correo.errors.required">
+                correo es requerido
+              </div>
+              <div *ngIf="correo.errors.minlength">
+                correo debe tener al menos 4 caracteres
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button" (click)='crearUsuario()' *ngIf="!usuario.id else elseBlock" [disabled]="!usuarioForm.form.valid">Crear</button>
+  
+            <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!clienteForm.form.valid">Editar</button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+  
+    </div>
+  </div>
